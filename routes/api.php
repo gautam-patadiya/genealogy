@@ -188,4 +188,11 @@ Route::middleware(['web', 'auth', 'core'])
             });
 
         Route::resource('trees', 'Tree\TreeController');
+
     });
+
+    Route::namespace('XmlImporter')
+        ->prefix('xml')
+        ->group(function () {
+            Route::post('import','XmlImporterController@run')->name('import.xml');
+        });

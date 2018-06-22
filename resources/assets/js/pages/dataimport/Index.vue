@@ -65,6 +65,21 @@
                             </span>
                         </a>
                     </file-uploader>
+                    <file-uploader @upload-start=" importing = true"
+                        @upload-successful="summary = $event;importing = false"
+                        @upload-error="importing = false;importType = null"
+                        :url="xmlImportUrl"
+                        v-if="importType == 'individual'">
+                        <a slot="upload-button"
+                            slot-scope="{ openFileBrowser }"
+                            @click="openFileBrowser"
+                            :class="['button is-success', { 'is-loading': importing }]">
+                            <span>{{ __('Import') }} XML</span>
+                            <span class="icon is-small">
+                                <fa icon="upload"/>
+                            </span>
+                        </a>
+                    </file-uploader>
                 </div>
             </div>
         </div>
@@ -271,6 +286,7 @@ export default {
     data() {
         return {
             path: route('import.initTable'),
+            xmlImportUrl: '/api/xml/import',
             importType: null,
             summary: null,
             template: null,
