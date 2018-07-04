@@ -10,7 +10,7 @@ class Repository extends Model
 {
     use Commentable, Addressable;
 
-    protected $fillable = ['name', 'description', 'type_id', 'is_active'];
+    protected $fillable = ['name', 'description', 'type_id', 'is_active', 'hlink'];
 
     protected $attributes = ['is_active' => false];
 

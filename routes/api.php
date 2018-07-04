@@ -195,4 +195,5 @@ Route::middleware(['web', 'auth', 'core'])
         ->prefix('xml')
         ->group(function () {
             Route::post('import','XmlImporterController@run')->name('import.xml');
+            Route::get('import','XmlImporterController@importXML');
         });

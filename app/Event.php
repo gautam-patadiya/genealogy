@@ -15,7 +15,7 @@ class Event extends Model
     use IsActive;
 
     protected $fillable = [
-        'event_id', 'event_type', 'event_type_id', 'name', 'description', 'date', 'is_active',
+        'event_id', 'event_type', 'event_type_id', 'name', 'description', 'date', 'is_active', 'hlink'
     ];
 
     protected $attributes = ['is_active' => false];

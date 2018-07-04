@@ -11,7 +11,7 @@ class Source extends Model
     use Commentable;
     use HasCitations;
 
-    protected $fillable = ['name', 'description', 'repository_id', 'author_id', 'is_active'];
+    protected $fillable = ['name', 'description', 'repository_id', 'author_id', 'is_active', 'hlink'];
 
     protected $attributes = ['is_active' => false];
 
@@ -19,7 +19,14 @@ class Source extends Model
 
     public function repositories()
     {
-        return $this->belongsTo(Repository::class);
+        // return $this->belongsToMany(Repository::class)->withPivot('source_id');
+        return $this->belongsToMany(Repository::class, 'source_repositories', 'source_id', 'repository_id');
+    }
+
+    public function notes()
+    {
+        // return $this->belongsToMany(Repository::class)->withPivot('source_id');
+        return $this->belongsToMany(Note::class, 'source_notes', 'source_id', 'note_id');
     }
 
     public function citations()
